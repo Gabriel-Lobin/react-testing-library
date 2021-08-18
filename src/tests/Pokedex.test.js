@@ -18,6 +18,19 @@ describe('testa o component Pokedex', () => {
     expect(nextPokeButton).toBeInTheDocument();
   });
 
+  test('testa o botão "Próximo pokémon"', () => {
+    renderWithRouter(<App />);
+    const nextPokeButton = screen.getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextPokeButton).toBeInTheDocument();
+    userEvent.click(nextPokeButton);
+    const namePoke = screen.getByTestId('pokemon-name');
+    expect(namePoke.textContent).toContain('Charmander');
+    const typePoke = screen.getByTestId('pokemon-type');
+    expect(typePoke.textContent).toContain('Fire');
+    const weightPoke = screen.getByTestId('pokemon-weight');
+    expect(weightPoke.textContent).toContain('Average weight: 8.5 kg');
+  });
+
   test('testa se existe 7 botões de filtro', () => {
     renderWithRouter(<App />);
     const typePokeButton = screen.getAllByTestId('pokemon-type-button');
