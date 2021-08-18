@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from './utils/renderWithRouter';
 import App from '../App';
 
-describe('testando links', () => {
+describe('testando links no component App', () => {
   test('testando o link "Home"', () => {
     renderWithRouter(<App />);
 
